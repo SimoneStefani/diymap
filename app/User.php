@@ -45,7 +45,7 @@ class User extends Authenticatable
      */
     public function joinedBoards()
     {
-        return $this->belongsToMany(Board::class, 'board_user', 'user_id', 'board_id')
+        return $this->belongsToMany(Board::class, 'board_user', 'user_id', 'board_id');
     }
 
     /**
@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function invitedBoards()
     {
-        return $this->belongsToMany(Board::class, 'board_user_invitation', 'user_id', 'board_id')
+        return $this->belongsToMany(Board::class, 'board_user_invitation', 'user_id', 'board_id');
     }
 
     /**
@@ -65,6 +65,6 @@ class User extends Authenticatable
      */
     public function locations()
     {
-        return $this->belongsToMany(Location::class, 'location_user', 'location_id', 'user_id')
+        return $this->belongsToMany(Location::class, 'location_user', 'location_id', 'user_id');
     }
 }
