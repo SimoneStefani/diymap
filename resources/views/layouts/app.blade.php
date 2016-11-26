@@ -12,13 +12,6 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
 </head>
 <body>
     <div id="app">
@@ -57,5 +50,6 @@
     <script src="/js/app_vendor.js"></script>
     <script src="/js/app.js"></script>
     @yield('scripts')
+    @include('partial.tracking')
 </body>
 </html>
