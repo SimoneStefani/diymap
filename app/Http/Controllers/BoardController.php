@@ -21,7 +21,7 @@ class BoardController extends Controller
             'title' => $request->title
         ]);
 
-        return json_encode($newBoard);
+        return redirect('boards');
     }
 
     public function show(string $board)
@@ -41,6 +41,10 @@ class BoardController extends Controller
         $joinedBoards = Auth::user()->joinedBoards;
 
         return view('board.index', compact(['ownedBoards', 'joinedBoards']));
+    }
+
+    public function createNew() {
+        return view('board.create');
     }
 
     public function destroy(string $board)
