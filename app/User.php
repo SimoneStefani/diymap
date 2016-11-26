@@ -39,6 +39,16 @@ class User extends Authenticatable
     }
 
     /**
+     * A user may have created many messages.
+     * 
+     * @return App\Message
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'author_id');
+    }
+
+    /**
      * A user may join many boards.
      * 
      * @return App\Board

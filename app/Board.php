@@ -42,6 +42,16 @@ class Board extends Model
     }
 
     /**
+     * A board may contain many messages.
+     * 
+     * @return App\Message
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'board_id');
+    }
+
+    /**
      * A board can contain many places.
      * 
      * @return App\Place

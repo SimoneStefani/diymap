@@ -5,6 +5,7 @@ window.ResMap = $map.GoogleMap({
     input: $('#input')
 });
 
+
 $('#invite-user').on('click', function() {
     alertify
         .defaultValue("Email...")
@@ -34,4 +35,13 @@ $('#invite-user').on('click', function() {
         }, function(ev) {
             ev.preventDefault();
         });
+});
+
+import Echo from "laravel-echo"
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: config('PUSHER_KEY'),
+    cluster: 'eu',
+    encrypted: true
 });
