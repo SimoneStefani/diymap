@@ -30,4 +30,4 @@ Route::resource('/boards/{board}/places', 'PlaceController');
 Route::resource('/locations', 'LocationController');
 
 Route::get('/users/{userId}/location', 'UserLocationController@getUserLocation');
-Route::post('/users/{userId}/update-location', 'UserLocationController@updateUserLocation');
+Route::post('/users/{userId}/location', 'UserLocationController@updateUserLocation');
