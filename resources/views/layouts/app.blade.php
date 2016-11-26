@@ -56,6 +56,7 @@
     @show --}}
 
     <!-- Scripts -->
+    <script> @if(!Auth::guest()) window.userHash = "{{ md5(Auth::user()->email) }}"; @endif </script>
     <script src="/js/app_vendor.js"></script>
     <script src="/js/app.js"></script>
     @yield('scripts')

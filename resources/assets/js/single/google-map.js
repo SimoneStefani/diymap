@@ -50,22 +50,55 @@
                 this.latlng = latlng;
                 this.map_ = map;
                 this.div_ = null;
+                this.args = args;
                 this.setMap(map);
 
                 this.updateLocation = function(latLng) {
-                    this.latlng = latLng
+                    if(latLng) {
+                        this.latlng = latLng
+                    };
                 };
             };
 
             CustomMarker.prototype.onAdd = function() {
                 var div = document.createElement('div');
+                div.style.borderStyle = 'none';
+                div.style.borderWidth = '0px';
                 div.style.position = 'absolute';
-                div.style.cursor = 'pointer';
-                div.style.width = '20px';
-                div.style.height = '20px';
-                div.style.background = 'blue';
-                this.div_ = div;
+                div.style.width = '30px';
+                div.style.height = '30px';
 
+                //create image element and add it to div + class for styling
+                var imgAvatar = document.createElement('img');
+                var imgCrown;
+                if (typeof(this.args.marker_id) !== 'undefined') {
+                    var name = 'avatar_' + this.args.marker_id;
+                    imgAvatar.classList.add(name);
+                    if (name == 'avatar_king') {
+                        imgCrown = document.createElement('img');
+                    }
+                };
+                //get avatar from gravatar
+                var imgAvatarSrc = 'https://www.gravatar.com/avatar/' + window.userHash + '?s=30';
+                imgAvatar.src = imgAvatarSrc;
+                imgAvatar.style.height = '100%';
+                imgAvatar.style.width = '100%';
+                imgAvatar.style.position = 'absolute';
+                div.appendChild(imgAvatar);
+
+                //add feature if user is king
+                if (imgCrown) {
+                    imgCrown.src = 'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/2/22/22624/croen-f.jpg';
+                    imgCrown.style.height = '100%';
+                    imgCrown.style.width = '100%';
+                    imgCrown.style.position = 'relative';
+                    imgCrown.style.left = 0 + 'px';
+                    imgCrown.style.top = -40 + 'px';
+                    div.appendChild(imgCrown);
+                }
+
+                this.div_ = div;
+                //add elements to "overlayLayer" pane
                 var panes = this.getPanes();
                 panes.overlayLayer.appendChild(div);
             };
@@ -74,9 +107,8 @@
                 var overlayProjection = this.getProjection();
                 var point = overlayProjection.fromLatLngToDivPixel(this.latlng);
                 var div = this.div_;
-
-                div.style.left = (point.x-20) + 'px';
-                div.style.top = (point.y-20) + 'px';
+                div.style.left = (point.x-30) + 'px';
+                div.style.top = (point.y-30) + 'px';
             };
 
             CustomMarker.prototype.onRemove = function() {
@@ -89,13 +121,17 @@
             CustomMarker.prototype.getPosition = function() {
                 return this.latlng;
             };
-
-
             //################# END OF CLASS #################
 
-            //this.addMarker(position, 'Hello!');
-            this.activeMarkers.push(new CustomMarker(position,this.map,{}));
-            console.log(this.activeMarkers[0].getPosition());
+            //add marker
+            this.activeMarkers.push(new CustomMarker(position,this.map,{marker_id: 'slave'}));
+
+            //add another marker
+            var newPosition = new google.maps.LatLng({lat: -40, lng: 140});
+            this.activeMarkers.push(new CustomMarker(newPosition,this.map,{marker_id: 'king'}));
+
+            //update locations like so...
+            //this.activeMarkers[0].updateLocation(newPosition);
 
             if (this.settings.input != null && this.settings.input.length > 0) {
                 this.initSearchBar();
