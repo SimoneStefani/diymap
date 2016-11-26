@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('navbar-left')
+    <div class="navbar-brand pull-left">
+        <button onclick="window.location.href='/boards'" class="btn btn-nav" type="button">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+    </div>
+@endsection
+
+@section('navbar')
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
