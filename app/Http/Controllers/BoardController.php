@@ -16,7 +16,7 @@ class BoardController extends Controller
             'title' => 'required|string'
         ]);
 
-        $newBoard = Auth::user()->ownedBoards->create([
+        $newBoard = Auth::user()->ownedBoards()->create([
             'title' => $request->title
         ]);
 

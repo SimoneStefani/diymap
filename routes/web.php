@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('/boards', 'BoardController');
+Route::resource('/boards/{board}/places', 'PlaceController');

@@ -53,6 +53,6 @@ class Board extends Model
      */
     public function invitedUsers()
     {
-        return $this->belongsToMany(User::class, 'board_user_invitation', 'user_id', 'board_id')
+        return $this->belongsToMany(User::class, 'board_user_invitation', 'user_id', 'board_id');
     }
 }
