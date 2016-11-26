@@ -55,7 +55,6 @@
             }
         },
 
-
         addMarker: function(pos, title) {
             //this.activeMarkers.push(new CustomMarker(pos,this.map,{}));
             //console.log(this.activeMarkers[0].getPosition());
