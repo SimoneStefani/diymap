@@ -47,3 +47,6 @@
     </div>
 </div>
 @endsection
+
+@section('google-maps')
+@endsection
