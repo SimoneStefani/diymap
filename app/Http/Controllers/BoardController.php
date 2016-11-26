@@ -68,11 +68,14 @@ class BoardController extends Controller
         ]);
 
         $board = Board::where('id', $board)->firstOrFail();
-
         $user = User::where('email', $request->email)->firstOrFail();
+        
+        if ($board->isParticipant($user->email)) {
+            throw new \Exception("User already on board.");
+        }
 
-        $board->participants()->attach($user);
-
+        $now = new \DateTime();
+        $board->participants()->attach($user, ['created_at' => $now, 'updated_at' => $now]);
         return json_encode($user);
     }
 

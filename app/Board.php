@@ -33,7 +33,12 @@ class Board extends Model
      */
     public function participants()
     {
-        return $this->belongsToMany(User::class, 'board_user', 'user_id', 'board_id');
+        return $this->belongsToMany(User::class);
+    }
+
+    public function isParticipant($email)
+    {
+        return $this->participants->where('email', $email)->count() > 0;
     }
 
     /**
