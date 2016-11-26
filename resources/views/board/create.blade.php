@@ -2,7 +2,7 @@
 
 @section('content')
     <a class="btn btn-primary" id="invite-user">Invite</a>
-    <div id="map"></div>
+    <div id="map" lat="-40" lng="140"></div>
     <div class="overlay-circle"></div>
     <form class="form-horizontal" name="create_form" role="form" method="POST" action="{{ url('/boards/'.$board->id.'/places') }}">
         {{ csrf_field() }}

@@ -28,7 +28,7 @@ class BoardController extends Controller
     public function show(string $board)
     {
         $board = Board::where('id', $board)->with('owner', 'participants', 'places')->firstOrFail();
-        $location = $board->places[0];
+        $location = $board->places->first();
 
         if (Auth::user()->id != $board->owner_id && Auth::user()->joined()->where('board_id', $board->id)) {
             throw new AccessDeniedHttpException("User not authorised!");
