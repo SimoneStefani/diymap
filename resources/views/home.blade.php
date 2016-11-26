@@ -33,7 +33,15 @@
                         <button class="btn btn-large blue" type="submit" name="action">Add location</button>
                     </div>
                 </form>
+                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/boards/2/add-user') }}">
+                    {{ csrf_field() }}
+                    <input id="email" type="text" name="email">
+                    <div class="button-wrapper">
+                        <button class="btn btn-large blue" type="submit" name="action">Add user</button>
+                    </div>
+                </form>
                 </div>
+
             </div>
         </div>
     </div>
