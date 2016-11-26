@@ -47,13 +47,9 @@
     @show --}}
 
     <!-- Scripts -->
-    <script>
-        @if(!Auth::guest())
-            window.userId = {{ Auth::user()->id }};
-        @endif
-    </script>
     <script src="/js/app_vendor.js"></script>
     <script src="/js/app.js"></script>
     @yield('scripts')
+    @include('partial.tracking')
 </body>
 </html>
