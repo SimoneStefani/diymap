@@ -5,9 +5,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="canvas-title">Boards</div>
+            @if(isset($ownedBoards))
             @foreach($ownedBoards as $owned)
-                <p><a href="{{ url('/boards/'.$owned->id) }}">{{ $owned->title }}</a></p>
-            @endforeach
+                    <p><a href="{{ url('/boards/'.$owned->id) }}">{{ $owned->title }}</a></p>
+                @endforeach
+            @endif
             <div class="board-card">
             	<div class="board-card-img"></div>
             	<div class="board-card-title">Woah what a gathering</div>
