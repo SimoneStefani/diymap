@@ -27,29 +27,84 @@
         currentState: 0,
         map: null,
         search: null,
+        activeMarkers: [],
 
         init: function() {
             var app = this;
-            var position = {lat: this.settings.lat, lng: this.settings.lng};
+            var position = new google.maps.LatLng({lat: this.settings.lat, lng: this.settings.lng});
+            //var position = {lat: this.settings.lat, lng: this.settings.lng};
 
             this.map = new google.maps.Map(this.element, {
                 zoom: 4,
                 center: position
             });
 
-            this.addMarker(position, 'Hello!');
+
+            //################# CUSTOM MARKER CLASS #################
+
+            CustomMarker.prototype = new google.maps.OverlayView();//subClass Overlay instance
+
+            //Constructor function for CustomMarker object
+            function CustomMarker(latlng,map,args) {
+                this.latlng = latlng;
+                this.map_ = map;
+                this.div_ = null;
+                this.setMap(map);
+
+                this.updateLocation = function(latLng) {
+                    this.latlng = latLng
+                };
+            };
+
+            CustomMarker.prototype.onAdd = function() {
+                var div = document.createElement('div');
+                div.style.position = 'absolute';
+                div.style.cursor = 'pointer';
+                div.style.width = '20px';
+                div.style.height = '20px';
+                div.style.background = 'blue';
+                this.div_ = div;
+
+                var panes = this.getPanes();
+                panes.overlayLayer.appendChild(div);
+            };
+
+            CustomMarker.prototype.draw = function() {
+                var overlayProjection = this.getProjection();
+                var point = overlayProjection.fromLatLngToDivPixel(this.latlng);
+                var div = this.div_;
+
+                div.style.left = (point.x-20) + 'px';
+                div.style.top = (point.y-20) + 'px';
+            };
+
+            CustomMarker.prototype.onRemove = function() {
+                if (this.div) {
+                    this.div_.parentNode.removeChild(this.div_);
+                    this.div_ = null;
+                }   
+            };
+
+            CustomMarker.prototype.getPosition = function() {
+                return this.latlng;
+            };
+
+
+            //################# END OF CLASS #################
+
+            //this.addMarker(position, 'Hello!');
+            this.activeMarkers.push(new CustomMarker(position,this.map,{}));
+            console.log(this.activeMarkers[0].getPosition());
 
             if (this.settings.input != null) {
                 this.initSearchBar();
             }
         },
 
+
         addMarker: function(pos, title) {
-            var marker = new google.maps.Marker({
-                position: pos,
-                map: this.map,
-                title: title
-            });
+            //this.activeMarkers.push(new CustomMarker(pos,this.map,{}));
+            //console.log(this.activeMarkers[0].getPosition());
         },
 
         initSearchBar: function() {
