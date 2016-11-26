@@ -33,7 +33,17 @@ class Board extends Model
      */
     public function participants()
     {
-        return $this->belongsToMany(User::class, 'board_user', 'user_id', 'board_id');
+        return $this->belongsToMany(User::class, 'board_user', 'board_id', 'user_id');
+    }
+
+    /**
+     * A board may contain many messages.
+     * 
+     * @return App\Message
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'board_id');
     }
 
     /**
