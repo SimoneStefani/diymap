@@ -5,8 +5,9 @@
     "use strict";
 
     var defaults = {
-        lat: 1,
-        lng: 2,
+        lat: 0,
+        lng: 0,
+        input: null,
         callback: function() {}
     };
 
@@ -25,6 +26,7 @@
         isInProgress: false,
         currentState: 0,
         map: null,
+        search: null,
 
         init: function() {
             var app = this;
@@ -36,6 +38,10 @@
             });
 
             this.addMarker(position, 'Hello!');
+
+            if (this.settings.input != null) {
+                this.initSearchBar();
+            }
         },
 
         addMarker: function(pos, title) {
@@ -46,9 +52,11 @@
             });
         },
 
-        initSearchBar: function (element) {
-            var input = document.getElementById(element);
-            var searchBox = new google.maps.places.SearchBox(input);
+        initSearchBar: function () {
+            this.search = new google.maps.places.SearchBox(this.settings.input.get(0), {});
+            this.search.addListener('places_changed', function() {
+                console.log('place changed.');
+            });
         }
     });
 
