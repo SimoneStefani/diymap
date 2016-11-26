@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/map', 'HomeController@map');
 
 Route::resource('/boards', 'BoardController');
+Route::post('/boards/{board}/add-user', 'BoardController@addUser');
+Route::get('/boards/{board}/users', 'BoardController@updateBoard');
 
 Route::resource('/boards/{board}/places', 'PlaceController');
 

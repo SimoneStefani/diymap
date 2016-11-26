@@ -33,34 +33,15 @@
                         <button class="btn btn-large blue" type="submit" name="action">Add location</button>
                     </div>
                 </form>
-
-
-                <form class="form-horizontal" name="createLocationForm" role="form" method="POST" action="{{ url('/locations') }}">
+                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/boards/2/add-user') }}">
                     {{ csrf_field() }}
+                    <input id="email" type="text" name="email">
                     <div class="button-wrapper">
-                        <input type="numeric" value="" name="long" />
-                        <input type="numeric" value="" name="lati" />
-                        <button class="btn btn-large blue" type="submit" name="action">createLocation</button>
+                        <button class="btn btn-large blue" type="submit" name="action">Add user</button>
                     </div>
                 </form>
-                <form class="form-horizontal" name="deleteLocationForm" role="form" method="POST" action="{{ url('/locations/1') }}">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    <div class="button-wrapper">
-                        <button class="btn btn-large blue" type="submit" name="action">deleteLocation</button>
-                    </div>
-                </form>
-
-                <form class="form-horizontal" name="updateUserLocation" role="form" method="POST" action="{{ url('/users/1/update-location') }}">
-                    {{ csrf_field() }}
-                    <div class="button-wrapper">
-                        <input type="numeric" value="" name="long" />
-                        <input type="numeric" value="" name="lati" />
-                        <button class="btn btn-large blue" type="submit" name="action">updateUserLocation</button>
-                    </div>
-                </form>
-
                 </div>
+
             </div>
         </div>
     </div>

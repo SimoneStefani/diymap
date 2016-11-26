@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Board;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,17 @@ class BoardController extends Controller
         return json_encode($newBoard);
     }
 
+    public function show(string $board)
+    {
+        $board = Board::where('id', $board)->with('owner', 'participants')->firstOrFail();
+
+        if (Auth::user()->id != $board->owner_id && Auth::user()->joined()->where('board_id', $board->id)) {
+            throw new AccessDeniedHttpException("User not authorised!");
+        }
+
+        return json_encode($board);
+    }
+
     public function destroy(string $board)
     {
         // If fails, throws 404
@@ -35,6 +47,28 @@ class BoardController extends Controller
 
         // If fails, throws 500
         $board->delete();
+
+        return json_encode($board);
+    }
+
+    public function addUser(string $board, Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+
+        $board = Board::where('id', $board)->firstOrFail();
+
+        $user = User::where('email', $request->email)->firstOrFail();
+
+        $board->participants()->attach($user);
+
+        return json_encode($user);
+    }
+
+    public function updateBoard(string $board)
+    {
+        $board = Board::where('id', $board)->with('participants.locations')->firstOrFail();
 
         return json_encode($board);
     }

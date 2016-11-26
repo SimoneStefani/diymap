@@ -34,6 +34,6 @@ class PlaceController extends Controller
         $board = Board::where('id', $board)->firstOrFail();
         $board->places()->attach($place, ['is_main' => $request->is_main, 'radius' => $request->radius]);
 
-        return $place;
+        return json_encode($place);
     }
 }
