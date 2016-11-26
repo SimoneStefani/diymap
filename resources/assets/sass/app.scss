@@ -169,3 +169,30 @@
 		}
 	}
 }
+
+/*Auth views*/
+
+.auth-container {
+	max-width: 600px;
+	margin: 10vh auto;
+	.auth-logo {
+		height: 150px;
+		width: 150px;
+		margin: 0 auto;
+		border-radius: 50px;
+		background-color: rgba(white, 0.6);
+	}
+	.form-auth {
+		margin-top: 80px;
+		input {
+			height: 80px;
+			box-shadow: none !important;
+			border: none !important;
+			border-radius: 10px;
+			background: rgba(255,255,255,0.9) !important;
+			text-align: center; 
+		}
+	}
+}
+
+
