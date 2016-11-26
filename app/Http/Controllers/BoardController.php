@@ -30,13 +30,14 @@ class BoardController extends Controller
 
     public function show(string $board)
     {
-        $board = Board::where('id', $board)->with('owner', 'participants')->firstOrFail();
+        $board = Board::where('id', $board)->with('owner', 'participants', 'places')->firstOrFail();
+        $location = $board->places[0];
 
         if (Auth::user()->id != $board->owner_id && Auth::user()->joined()->where('board_id', $board->id)) {
             throw new AccessDeniedHttpException("User not authorised!");
         }
 
-        return view('board.board', compact('board'));
+        return view('board.board', compact('board', 'location'));
     }
 
     public function index()
