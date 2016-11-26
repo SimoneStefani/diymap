@@ -7,13 +7,14 @@
             <div class="canvas-title">Boards</div>
             @if(isset($ownedBoards))
             @foreach($ownedBoards as $owned)
-                    <p><a href="{{ url('/boards/'.$owned->id) }}">{{ $owned->title }}</a></p>
-                @endforeach
+                <div class="board-card">
+                    <div class="board-card-img"></div>
+                    <a href="{{ url('/boards/'.$owned->id) }}">
+                    <div class="board-card-title">{{ $owned->title }}</div>
+                    </a>
+                </div>
+            @endforeach
             @endif
-            <div class="board-card">
-            	<div class="board-card-img"></div>
-            	<div class="board-card-title">Woah what a gathering</div>
-            </div>
         </div>
     </div>
 </div>
