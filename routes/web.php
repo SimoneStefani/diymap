@@ -18,5 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/map', 'HomeController@map');
 
 Route::resource('/boards', 'BoardController');
