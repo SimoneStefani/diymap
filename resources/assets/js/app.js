@@ -10,14 +10,30 @@ function initMap() {
 $('#invite-user').on('click', function() {
     alertify
         .defaultValue("Email...")
+        .logPosition("bottom right")
         .prompt("Invite another user by email:", function (val, ev) {
-            // The click event is in the event variable, so you can use it here.
             ev.preventDefault();
-            // The value entered is availble in the val variable.
-            alertify.success("You've clicked OK and typed: " + val);
+
+            $.ajax({
+                type: "POST",
+                url: '/boards/3/add-user',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    email: val
+                },
+                dataType: 'json',
+                success: function(data) {
+                    alertify.success("User " + val + " added!");
+                    console.log(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                    alertify.error("Whoops! Something went wrong.");
+                }
+            });
         }, function(ev) {
-            // The click event is in the event variable, so you can use it here.
             ev.preventDefault();
-            alertify.error("You've clicked Cancel");
         });
 });

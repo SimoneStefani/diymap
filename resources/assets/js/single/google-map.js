@@ -36,7 +36,8 @@
 
             this.map = new google.maps.Map(this.element, {
                 zoom: 4,
-                center: position
+                center: position,
+                disableDefaultUI: true
             });
 
 
@@ -96,7 +97,7 @@
             this.activeMarkers.push(new CustomMarker(position,this.map,{}));
             console.log(this.activeMarkers[0].getPosition());
 
-            if (this.settings.input != null) {
+            if (this.settings.input != null && this.settings.input.length > 0) {
                 this.initSearchBar();
             }
         },
