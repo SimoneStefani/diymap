@@ -29,6 +29,7 @@
         init: function() {
             var app = this;
             var position = {lat: this.settings.lat, lng: this.settings.lng};
+
             this.map = new google.maps.Map(this.element, {
                 zoom: 4,
                 center: position
@@ -43,6 +44,11 @@
                 map: this.map,
                 title: title
             });
+        },
+
+        initSearchBar: function (element) {
+            var input = document.getElementById(element);
+            var searchBox = new google.maps.places.SearchBox(input);
         }
     });
 
