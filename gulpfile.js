@@ -68,6 +68,7 @@ gulp.task('img', function(){
 //
 gulp.task('sass', function(){
     var src = [
+        config.node + '/alertify.js/dist/css/alertify.css',
         config.assets + '/sass/*.scss'
     ];
 
@@ -97,7 +98,8 @@ gulp.task('sass', function(){
 //
 gulp.task('js_vendor', function(){
     var queue = [
-        config.node + '/jquery/dist/jquery.min.js'
+        config.node + '/jquery/dist/jquery.min.js',
+        config.node + '/alertify.js/dist/js/alertify.js'
     ];
 
     return gulp.src(queue)
