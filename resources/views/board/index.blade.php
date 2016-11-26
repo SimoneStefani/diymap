@@ -34,11 +34,12 @@
     	<form class="input-group" name="create_form" role="form" method="POST" action="{{ url('/boards') }}">
     	    {{ csrf_field() }}
     	    <div class="button-wrapper">
-    	        <input type="text" value="" name="title" class="form-control form-nav" placeholder="Where you want to meet?" autocomplete="off" autofocus>
+    	        <input id="where" type="text" value="" name="title" class="form-control form-nav" placeholder="Where you want to meet?" autocomplete="off" autofocus>
+                <input id="lati" type="hidden" name="lati">
+                <input id="long" type="hidden" name="long">
     	        <button class="btn btn-form-nav" type="submit" name="action"><i class="fa fa-search" aria-hidden="true"></i></button>
     	        <div class="autofill-results"></div>
     	    </div>
     	</form>
-
-</div>
+    </div>
 @endsection

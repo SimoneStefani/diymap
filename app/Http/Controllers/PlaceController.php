@@ -9,14 +9,6 @@ use \Illuminate\Database\Eloquent\Factory;
 
 class PlaceController extends Controller
 {
-    public function create(string $board)
-    {
-        $board = Board::where('id', $board)->firstOrFail();
-
-        return view('board.create', compact('board'));
-    }
-
-
     public function store(string $board, Request $request)
     {        
         $board = Board::where('id', $board)->firstOrFail();

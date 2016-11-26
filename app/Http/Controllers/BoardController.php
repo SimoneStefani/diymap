@@ -18,11 +18,14 @@ class BoardController extends Controller
             'title' => 'required|string'
         ]);
 
-        $newBoard = Auth::user()->ownedBoards()->create([
-            'title' => $request->title
+        $board = Auth::user()->ownedBoards()->create([
+            'title' => $request->title,
         ]);
 
-        return redirect('/boards/'.$newBoard->id.'/places/create');
+        $lng = $request->input('long');
+        $lat = $request->input('lati');
+
+        return view('board.create', compact('board', 'lng', 'lat'));
     }
 
     public function show(string $board)

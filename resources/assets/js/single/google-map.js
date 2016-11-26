@@ -49,10 +49,6 @@
 
             //update locations like so...
             //this.activeMarkers[0].updateLocation(newPosition);
-
-            if (this.settings.input != null && this.settings.input.length > 0) {
-                this.initSearchBar();
-            }
         },
 
         addMarker: function(pos, title) {

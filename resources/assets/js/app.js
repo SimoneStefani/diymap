@@ -37,8 +37,22 @@ $('#invite-user').on('click', function() {
         });
 });
 
-// import Echo from "laravel-echo"
+var $where = $('#where'),
+    $lati = $('#lati'),
 
+    $long = $('#long');
+
+
+if ($where.length > 0) {
+    var search = new google.maps.places.SearchBox($where.get(0), {});
+    search.addListener('places_changed', function() {
+        var places = search.getPlaces();
+        $lati.val(places[0].geometry.location.lat);
+        $long.val(places[0].geometry.location.lng);
+    });
+}
+
+// import Echo from "laravel-echo"
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: config('PUSHER_KEY'),
