@@ -28,22 +28,16 @@
                 </div>
             @endforeach
             @endif
-            <form class="form-horizontal" name="create_form" role="form" method="POST" action="{{ url('/boards') }}">
-                {{ csrf_field() }}
-                <div class="button-wrapper">
-                    <input type="text" value="" name="title" />
-                    <button class="btn btn-large blue" type="submit" name="action">create</button>
-                </div>
-            </form>
         </div>
     </div>
     <div class="search-container">
-    	<div class="input-group">
-    		<input type="text" class="form-control form-nav" placeholder="Where you want to meet?" autocomplete="off" autofocus>
-    		<span class="input-group-btn">
-    			<button type="submit" class="btn btn-form-nav"><i class="fa fa-search" aria-hidden="true"></i></button>
-    		</span>
-    	</div>
-    </div>
+    	<form class="input-group" name="create_form" role="form" method="POST" action="{{ url('/boards') }}">
+    	    {{ csrf_field() }}
+    	    <div class="button-wrapper">
+    	        <input type="text" value="" name="title" class="form-control form-nav" placeholder="Where you want to meet?" autocomplete="off" autofocus>
+    	        <button class="btn btn-form-nav" type="submit" name="action"><i class="fa fa-search" aria-hidden="true"></i></button>
+    	    </div>
+    	</form>
+
 </div>
 @endsection
