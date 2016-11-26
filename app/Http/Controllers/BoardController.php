@@ -38,4 +38,19 @@ class BoardController extends Controller
 
         return json_encode($board);
     }
+
+    public function addUser(string $board, Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+
+        $board = Board::where('id', $board)->firstOrFail();
+
+        $user = User::where('email', $request->email)->fristOrFail();
+
+        $board->participants()->attach($user);
+
+        return json_decode($user);
+    }
 }
