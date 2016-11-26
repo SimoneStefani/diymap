@@ -121,6 +121,7 @@ gulp.task('js_vendor', function(){
 //
 gulp.task('js', function(){
     return gulp.src([
+            config.assets + '/js/single/google-map.js',
             config.assets + '/js/*.js',
         ])
         .pipe(sourcemaps.init())
@@ -168,14 +169,14 @@ gulp.task('default', function(callback) {
 //  Watch Sass
 //
 gulp.task('watch_sass', function(callback){
-    run_sequence('sass', 'clean', 'version', callback);
+    run_sequence('sass', 'clean', callback);
 });
 
 //
 //  Watch Js
 //
 gulp.task('watch_js', function(callback){
-    run_sequence('js', 'clean', 'version', callback);
+    run_sequence('js', 'clean', callback);
 });
 
 //
