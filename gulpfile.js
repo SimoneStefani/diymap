@@ -123,6 +123,7 @@ gulp.task('js_vendor', function(){
 //
 gulp.task('js', function(){
     return gulp.src([
+            config.assets + '/js/single/custom-marker.js',
             config.assets + '/js/single/google-map.js',
             config.assets + '/js/*.js',
         ])

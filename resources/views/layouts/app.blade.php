@@ -56,6 +56,9 @@
     @show --}}
 
     <!-- Scripts -->
+    @section('google-maps')
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJEeEzm1BmEdB-98X9lGRdY78RJclvOHM&libraries=places"></script>
+    @show
     <script> @if(!Auth::guest()) window.userHash = "{{ md5(Auth::user()->email) }}"; @endif </script>
     <script src="/js/app_vendor.js"></script>
     <script src="/js/app.js"></script>
