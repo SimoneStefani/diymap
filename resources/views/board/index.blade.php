@@ -25,7 +25,4 @@
         </div>
     </div>
 </div>
-<div>
-    <p><a href="{{ url('/boards/create') }}">+</a></p>
-</div>
 @endsection
