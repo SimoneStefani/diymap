@@ -44,49 +44,6 @@
 }
 
 
-.map-full {
-	height: 100vh;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	height: 100vh;
-}
-
-.overlay-circle {
-    width: 100%;
-    height: 100vh;
-    pointer-events: none;
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-}
-.overlay-circle:before{
-    content: '';
-    position: absolute;
-    top: 10%;
-    width: 50vw;
-    border-radius: 100%;
-    box-shadow: 0px 300px 0px 1000px rgba(251, 77, 61, 0.9);
-    height: 50vw;
-    border: 15px solid white;
-    margin-left: 25%;
-}
-
-@media(max-width:991px) {
-	.overlay-circle:before{
-		height: 80vw;
-		width: 80vw;
-		margin-left: 10%;
-	}
-}
-@media(max-width:767px) {
-	.overlay-circle:before{
-		height: 90vw;
-		width: 90vw;
-		margin-left: 5%;
-	}
-}
-
 .navbar-header {
 	width: 15%;
 	height: 70px;
@@ -133,15 +90,75 @@
 
 .canvas-container {
 	margin-top: 50px;
+	margin-bottom: 100px;
 }
 
 .canvas-title {
+	margin: 1% 0;
 	color: white;
-	font-size: 42px;
+	width: 100%;
 	text-align: center;
+	font-size: 38px;
 	font-weight: 700;
-	margin-bottom: 30px;
 }
+
+.canvas-title-inboard {
+	position: absolute;
+	z-index: 1000;
+	margin: 1% 0 0 0;
+}
+
+
+.map-full {
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+.overlay-circle {
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+}
+.overlay-circle:before{
+    content: '';
+    position: absolute;
+    top: 10%;
+    width: 50vw;
+    border-radius: 100%;
+    box-shadow: 0px 300px 0px 1000px rgba(251, 77, 61, 0.9);
+    height: 50vw;
+    border: 15px solid white;
+    margin-left: 25%;
+
+}
+
+@media(max-width:991px) {
+	.overlay-circle:before{
+		height: 80vw;
+		width: 80vw;
+		margin-left: 10%;
+	}
+}
+@media(max-width:767px) {
+	.overlay-circle:before{
+		height: 90vw;
+		width: 90vw;
+		margin-left: 5%;
+		border-width: 5px;
+		top: 110px;
+	}
+	.canvas-title-inboard {
+		margin-top: 50px;
+		font-size: 28px;
+	}
+}
+
 
 .board-card {
 	width: 100%;
@@ -237,6 +254,8 @@
 	.input-group {
 		width: 70%;
 		margin: 0 auto;
+		border-radius: 50px 50px 0 0;
+		box-shadow: 0px -7px 30px -13px rgba(0,0,0,0.3);
 	}
 }
 
@@ -260,10 +279,23 @@
 	font-size: 24px;
 }
 
+.autofill-results {
+	height: 0px;
+	transition: height 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	width: 100%;
+	background-color: white;
+	&.active {
+		height: 200px;
+	}
+}
+
+
+
 @media(max-width:767px) {
 	.search-container {
 		.input-group {
 			width: 100%;
+			border-radius: 0;
 			input {
 				text-align: left;
 			}

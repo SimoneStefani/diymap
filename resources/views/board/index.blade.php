@@ -36,6 +36,7 @@
     	    <div class="button-wrapper">
     	        <input type="text" value="" name="title" class="form-control form-nav" placeholder="Where you want to meet?" autocomplete="off" autofocus>
     	        <button class="btn btn-form-nav" type="submit" name="action"><i class="fa fa-search" aria-hidden="true"></i></button>
+    	        <div class="autofill-results"></div>
     	    </div>
     	</form>
 
