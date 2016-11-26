@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Board;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -20,6 +21,9 @@ class BoardController extends Controller
         $newBoard = Auth::user()->ownedBoards()->create([
             'title' => $request->title
         ]);
+
+        $place = PlaceController::insertNewPlace(-33.88, 151.20, 'Sydney NSW, Australia');
+        PlaceController::attachPlaceToBoard($newBoard->id, $place, TRUE, 17.0); 
 
         return redirect('boards');
     }

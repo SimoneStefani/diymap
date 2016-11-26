@@ -18,22 +18,36 @@ class PlaceController extends Controller
             'radius' => 'required|numeric'
         ]);
 
-        // TO FIX
-        $place = Place::where('lati', $request->lati)->first();
+        $place = PlaceController::insertNewPlace( $request->lati, $request->long, $request->name);
+
+        PlaceController::attachPlaceToBoard($board, $place, $request->is_main, $request->radius);
+
+        return json_encode($place);
+    }
+
+    public static function insertNewPlace(float $lati, float $long, string $name) 
+    {
+        $place = Place::where([
+                ['lati', $lati],
+                ['long', $long]
+            ])->first();
 
         if (is_null($place)) {
             $place = new Place([
-                'name' => $request->name,
-                'long' => $request->long,
-                'lati' => $request->lati
+                'name' => $name,
+                'long' => $long,
+                'lati' => $lati
             ]);
 
             $place->save();
         }
 
-        $board = Board::where('id', $board)->firstOrFail();
-        $board->places()->attach($place, ['is_main' => $request->is_main, 'radius' => $request->radius]);
+        return $place;
+    }
 
-        return json_encode($place);
+    public static function attachPlaceToBoard(string $boardId, Place $place, bool $isMain, float $radius) 
+    {
+        $board = Board::where('id', $boardId)->firstOrFail();
+        $board->places()->attach($place, ['is_main' => $isMain, 'radius' => $radius]);
     }
 }
