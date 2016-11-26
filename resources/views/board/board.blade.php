@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>{{$board->title}}</h1>
     <div id="map"></div>
 @endsection
 

@@ -32,7 +32,15 @@ class BoardController extends Controller
             throw new AccessDeniedHttpException("User not authorised!");
         }
 
-        return json_encode($board);
+        return view('board.board', compact('board'));
+    }
+
+    public function index()
+    {
+        $ownedBoards = Auth::user()->ownedBoards;
+        $joinedBoards = Auth::user()->joinedBoards;
+
+        return view('board.index', compact(['ownedBoards', 'joinedBoards']));
     }
 
     public function destroy(string $board)

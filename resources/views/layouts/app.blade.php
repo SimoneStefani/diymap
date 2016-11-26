@@ -81,9 +81,9 @@
         @yield('content')
     </div>
 
-    @section('meta')
+    {{-- @section('meta')
         @include('components.assets.meta')
-    @show
+    @show --}}
 
     <!-- Scripts -->
     <script src="/js/app_vendor.js"></script>
