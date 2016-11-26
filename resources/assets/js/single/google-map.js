@@ -52,11 +52,19 @@
             });
         },
 
-        initSearchBar: function () {
+        initSearchBar: function() {
+            var app = this;
             this.search = new google.maps.places.SearchBox(this.settings.input.get(0), {});
             this.search.addListener('places_changed', function() {
-                console.log('place changed.');
+                app.updateMapCenter();
             });
+        },
+
+        updateMapCenter: function() {
+            var places = this.search.getPlaces();
+            var bounds = new google.maps.LatLngBounds();
+            bounds.extend(places[0].geometry.location);
+            this.map.fitBounds(bounds);
         }
     });
 
