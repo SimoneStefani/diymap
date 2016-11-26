@@ -22,10 +22,7 @@ class BoardController extends Controller
             'title' => $request->title
         ]);
 
-        $place = PlaceController::insertNewPlace(-33.88, 151.20, 'Sydney NSW, Australia');
-        PlaceController::attachPlaceToBoard($newBoard->id, $place, TRUE, 17.0); 
-
-        return redirect('boards');
+        return redirect('/boards/'.$newBoard->id.'/places/create');
     }
 
     public function show(string $board)
@@ -46,10 +43,6 @@ class BoardController extends Controller
         $joinedBoards = Auth::user()->joinedBoards;
 
         return view('board.index', compact(['ownedBoards', 'joinedBoards']));
-    }
-
-    public function createNew() {
-        return view('board.create');
     }
 
     public function destroy(string $board)

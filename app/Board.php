@@ -43,7 +43,7 @@ class Board extends Model
      */
     public function places()
     {
-        return $this->belongsToMany(Place::class, 'board_place', 'place_id', 'board_id')->withPivot('is_main','radius');
+        return $this->hasMany(Place::class);
     }
 
     /**

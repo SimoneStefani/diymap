@@ -17,12 +17,12 @@ class Place extends Model
     protected $fillable = ['name', 'lati', 'long'];
 
     /**
-     * A place can be referenced by many boards.
+     * A place can be referenced by a board.
      * 
      * @return App\Board
      */
     public function boards()
     {
-        return $this->belongsToMany(Board::class, 'board_place', 'place_id', 'board_id')->withPivot('is_main','radius');
+        return $this->belongsTo(Board::class);
     }
 }

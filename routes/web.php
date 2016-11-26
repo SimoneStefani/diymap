@@ -23,7 +23,6 @@ Route::get('/map', 'HomeController@map');
 Route::resource('/boards', 'BoardController');
 Route::post('/boards/{board}/add-user', 'BoardController@addUser');
 Route::get('/boards/{board}/users', 'BoardController@updateBoard');
-Route::get('/boards/create', 'BoardController@createNew');
 
 Route::resource('/boards/{board}/places', 'PlaceController');
 

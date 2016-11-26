@@ -18,6 +18,10 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->float('lati');
             $table->float('long');
+            $table->integer('board_id')->unsigned();
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
+            $table->boolean('is_main')->default(false);
+            $table->integer('radius')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

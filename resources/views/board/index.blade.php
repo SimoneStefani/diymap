@@ -15,6 +15,13 @@
                 </div>
             @endforeach
             @endif
+            <form class="form-horizontal" name="create_form" role="form" method="POST" action="{{ url('/boards') }}">
+                {{ csrf_field() }}
+                <div class="button-wrapper">
+                    <input type="text" value="" name="title" />
+                    <button class="btn btn-large blue" type="submit" name="action">create</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
