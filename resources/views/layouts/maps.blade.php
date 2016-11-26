@@ -26,8 +26,8 @@
     </div>
 
     <!-- Scripts -->
+    <script src="/js/app_vendor.js"></script>
     <script src="/js/app.js"></script>
-    <script src="/js/map.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJEeEzm1BmEdB-98X9lGRdY78RJclvOHM&callback=initMap">
     </script>
