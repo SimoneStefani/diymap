@@ -37,11 +37,11 @@ $('#invite-user').on('click', function() {
         });
 });
 
-import Echo from "laravel-echo"
+// import Echo from "laravel-echo"
 
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: config('PUSHER_KEY'),
-    cluster: 'eu',
-    encrypted: true
-});
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: config('PUSHER_KEY'),
+//     cluster: 'eu',
+//     encrypted: true
+// });
