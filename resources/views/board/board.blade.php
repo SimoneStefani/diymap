@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{$board->title}}</h1>
     <input id="input" type="text">
-
     <div id="map" data-lat="{{ $location->lati }}" data-lng="{{ $location->long }}"></div>
+
+        <div class="overlay-circle"></div>
+
+        <div class="container-create-btn">
+            <button type="submit" class="btn btn-resurrection">CREATE</button>
+        </div>
 @endsection
 
 @section('scripts')
