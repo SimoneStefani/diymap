@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <div id="app">
@@ -19,23 +20,31 @@
 
           <!-- Left area -->
           <div class="navbar-header pull-left"> 
+            @section('navbar-left')
             <!-- <div class="logo" onclick="window.location.href='/'"></div>    -->
-            <a onclick="window.location.href='/'" class="navbar-brand" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            <div class="navbar-brand">
+                <button onclick="window.location.href='/'" class="btn btn-nav" type="button">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </button>
+            </div>
+            @show
             <!-- <a onclick="window.location.href='/'" class="navbar-brand" role="button">R</a> -->
           </div>
 
           <!-- Right area -->
           <div class="navbar-header pull-right">
-              @if (Auth::guest())
-                  <a class="navbar-brand pull-right" href="{{ url('/login') }}">Login</a>
-              @else
-                <a class="navbar-brand pull-right" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-                              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                  {{ csrf_field() }}
-                              </form>
-              @endif
+            @section('navbar')
+                @if (Auth::guest())
+                    <a class="navbar-brand pull-right" href="{{ url('/login') }}">Login</a>
+                @else
+                    <a class="navbar-brand pull-right" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                @endif
+            @show
           </div>
         </nav>  
 

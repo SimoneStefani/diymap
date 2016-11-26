@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@section('navbar')
+	<div class="navbar-brand pull-right">
+
+	<a class="btn btn-nav" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+	    <i class="fa fa-sign-out" aria-hidden="true"></i>
+	</a>
+	<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+	    {{ csrf_field() }}
+	</form>
+
+	</div>
+@endsection
+
 @section('content')
 <div class="container canvas-container">
     <div class="row">
@@ -23,6 +36,14 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="search-container">
+    	<div class="input-group">
+    		<input type="text" class="form-control form-nav" placeholder="Where you want to meet?" autocomplete="off" autofocus>
+    		<span class="input-group-btn">
+    			<button type="submit" class="btn btn-form-nav"><i class="fa fa-search" aria-hidden="true"></i></button>
+    		</span>
+    	</div>
     </div>
 </div>
 @endsection
