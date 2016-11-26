@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h3>Board</h3>
-        </div>
-    </div>
-</div>
+    <div id="map"></div>
+@endsection
+
+@section('scripts')
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJEeEzm1BmEdB-98X9lGRdY78RJclvOHM&callback=initMap">
+    </script>
 @endsection

@@ -81,7 +81,13 @@
         @yield('content')
     </div>
 
+    @section('meta')
+        @include('components.assets.meta')
+    @show
+
     <!-- Scripts -->
+    <script src="/js/app_vendor.js"></script>
     <script src="/js/app.js"></script>
+    @yield('scripts')
 </body>
 </html>
