@@ -40,12 +40,6 @@
                 disableDefaultUI: true
             });
 
-
-            //################# CUSTOM MARKER CLASS #################
-
-            
-            //################# END OF CLASS #################
-
             //add marker
             this.activeMarkers.push(new CustomMarker(position,this.map,{marker_id: 'slave'}));
 
