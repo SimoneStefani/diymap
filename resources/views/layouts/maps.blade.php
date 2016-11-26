@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Styles -->
+    <link href="/css/app.css" rel="stylesheet">
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -19,29 +22,14 @@
 </head>
 <body>
     <div id="app">
-        <div id="map" style="height:500px; width: 100%;"></div>
+        <div id="map"></div>
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script>
-            function initMap() {
-                var myLatLng = {lat: -25.363, lng: 131.044};
-
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
-                    center: myLatLng
-                });
-
-                var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    title: 'Hello World!'
-                });
-            }
-        </script>
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJEeEzm1BmEdB-98X9lGRdY78RJclvOHM&callback=initMap">
-        </script>
+    <script src="/js/map.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJEeEzm1BmEdB-98X9lGRdY78RJclvOHM&callback=initMap">
+    </script>
 </body>
 </html>
