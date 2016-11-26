@@ -8,4 +8,191 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-@import "map/base.scss"
+@import "map/base.scss";
+
+/*General styling*/
+.logo {
+	width: 50px;
+	height: 50px;
+	background-color: rgba(255,255,255,0.5);
+	margin: 10px 10px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+
+.map-full {
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+.overlay-circle {
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+}
+.overlay-circle:before{
+    content: '';
+    position: absolute;
+    top: 10%;
+    width: 50vw;
+    border-radius: 100%;
+    box-shadow: 0px 300px 0px 1000px rgba(251, 77, 61, 0.9);
+    height: 50vw;
+    border: 15px solid white;
+    margin-left: 25%;
+}
+
+@media(max-width:991px) {
+	.overlay-circle:before{
+		height: 80vw;
+		width: 80vw;
+		margin-left: 10%;
+	}
+}
+@media(max-width:767px) {
+	.overlay-circle:before{
+		height: 90vw;
+		width: 90vw;
+		margin-left: 5%;
+	}
+}
+
+.navbar-header {
+	width: 15%;
+	height: 70px;
+	a {
+		color: white;
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+	.navbar-brand {
+		padding: 14px 23px;
+	}
+}
+
+.navbar-center {
+	float: left;
+	padding: 10px 0;
+	width: 70%;
+}
+
+.form-nav {
+	border: none;
+	box-shadow: none !important;
+	height: 50px;
+	font-size: 16px;
+	width: calc(100%-50px);
+}
+
+.btn-form-nav {
+	background-color: white;
+	height: 50px;
+	width: 50px;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.container-create-btn {
+	bottom: 50px;
+	height: 100px;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+}
+
+.btn-resurrection {
+	padding: 15px 150px;
+	border-radius: 50px;
+	background: #C42847;
+	color: white;
+	font-size: 28px;
+	box-shadow: 0px 10px 25px -9px rgba(0,0,0,0.3);
+	outline: none !important;
+	&:hover,&:focus {
+		background-color: darken(#C42847, 2%);
+		color: white;
+		box-shadow: 0px 10px 23px -9px rgba(0,0,0,0.3);
+	}
+}
+
+/*Board index*/
+
+.canvas-container {
+	margin-top: 50px;
+}
+
+.canvas-title {
+	color: white;
+	font-size: 42px;
+	text-align: center;
+	font-weight: 700;
+	margin-bottom: 30px;
+}
+
+.board-card {
+	width: 100%;
+	height: 100px;
+	background: white;
+	border-radius: 50px;
+	margin-bottom: 15px;
+	padding: 5px;
+	position: relative;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+	cursor: pointer;
+	&:focus, &:hover {
+		box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.2);
+	}
+
+	.board-card-img {
+		float: left;
+		height: 90px;
+		width: 90px;
+		border-radius: 45px;
+		background: #5e86a9;
+	}
+	.board-card-title {
+		width: calc(100% - 90px);
+		float: left;
+		font-size: 24px;
+		text-align: center;
+		padding: 23px 0;
+		@media(max-width: 767px){
+			padding: 31px 0;
+			font-size: 18px;
+		}
+	}
+}
+
+/*Auth views*/
+
+.auth-container {
+	max-width: 600px;
+	margin: 10vh auto;
+	.auth-logo {
+		height: 150px;
+		width: 150px;
+		margin: 0 auto;
+		border-radius: 50px;
+		background-color: rgba(white, 0.6);
+	}
+	.form-auth {
+		margin-top: 80px;
+		input {
+			height: 80px;
+			box-shadow: none !important;
+			border: none !important;
+			border-radius: 10px;
+			background: rgba(255,255,255,0.9) !important;
+			text-align: center; 
+		}
+	}
+}
+
+
