@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Board;
 use App\Place;
 use Illuminate\Http\Request;
+use \Illuminate\Database\Eloquent\Factory;
 
 class PlaceController extends Controller
 {
@@ -17,23 +18,10 @@ class PlaceController extends Controller
 
 
     public function store(string $board, Request $request)
-    {
-        // $this->validate($request, [
-        //     'name' => 'required|string',
-        //     'long' => 'required',
-        //     'lati' => 'required',
-        //     'is_main' => 'required|boolean',
-        //     'radius' => 'required|numeric'
-        // ]);
-        // TO FIX
-        
+    {        
         $board = Board::where('id', $board)->firstOrFail();
-        $board->places()->create([
-                'name' => $request->name,
-                'long' => $request->long,
-                'lati' => $request->lati,
-                // 'radius' => 10
-            ]);
+        $place = factory(Place::class)->make();
+        $board->places()->save($place);
         return redirect('/boards');
     }
 }
