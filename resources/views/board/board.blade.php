@@ -22,7 +22,9 @@
     <div class="overlay-circle"></div>
 	<div class="user-ribbon-wrapper">
 	    <div class="user-ribbon">
-	    	<div class="user"></div>
+        @foreach($board->participants as $part)
+	    	<div class="user">{{ $part->name }}</div>
+        @endforeach
 	    </div>
 	</div>
 @endsection
