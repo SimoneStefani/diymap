@@ -27,7 +27,8 @@ $('#invite-user').on('click', function() {
                 dataType: 'json',
                 success: function(data) {
                     alertify.success("User " + val + " added!");
-                    $( ".user-ribbon" ).append( '<div class="user">' + data.name + '</div>' );
+                    var entryPt = $( ".user-ribbon" ).children().length + 1;
+                    $( ".user-ribbon" ).append( '<div class="user"><img src="/uploads/avatars/' + entryPt + '.svg"></div>' );
                     console.log(data);
                 },
                 error: function(data) {

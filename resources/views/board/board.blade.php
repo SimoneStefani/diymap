@@ -23,7 +23,7 @@
 	<div class="user-ribbon-wrapper">
 	    <div class="user-ribbon">
         @foreach($board->participants as $part)
-	    	<div class="user">{{ $part->name }}</div>
+	    	<div class="user"><img src="/uploads/avatars/{{$loop->iteration}}.svg"></div>
         @endforeach
 	    </div>
 	</div>
