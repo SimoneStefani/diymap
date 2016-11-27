@@ -10,7 +10,7 @@
 
 @section('navbar')
 	<div class="navbar-brand pull-right">
-        <button id="invite-user" class="btn btn-nav" type="button">
+        <button id="invite-user" data-user="{{ $board->id }}" class="btn btn-nav" type="button">
             <i class="fa fa-user-plus" aria-hidden="true"></i>
         </button>
 	</div>

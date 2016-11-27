@@ -6,8 +6,8 @@ window.ResMap = $map.GoogleMap({
     input: $('#input')
 });
 
-
 $('#invite-user').on('click', function() {
+    var userId = $(this).data('user');
     alertify
         .defaultValue("Email...")
         .logPosition("bottom right")
@@ -16,7 +16,7 @@ $('#invite-user').on('click', function() {
 
             $.ajax({
                 type: "POST",
-                url: '/boards/3/add-user',
+                url: '/boards/' + userId + '/add-user',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
