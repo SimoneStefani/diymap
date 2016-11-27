@@ -84,7 +84,7 @@
                     if (app.activeMarkers.length > 0) {
                         for (var i=0; i<app.activeMarkers.length; i++) {
                             app.activeMarkers[i].removeMarker();
-                            console.log("marker--");
+                            // console.log("marker--");
                         };
                     };
 
@@ -100,7 +100,7 @@
                             marker_id = 'king';
                         }
 
-                        console.log("marker++");
+                        // console.log("marker++");
                         app.activeMarkers.push(new CustomMarker(
                             tempPosition,
                             app.map,
@@ -111,7 +111,7 @@
                         ));
                     }
 
-                    console.log("-end");
+                    // console.log("-end");
 
                 },
                 error: function() {
