@@ -8,6 +8,7 @@
         lat: 0,
         lng: 0,
         input: null,
+        radius: 17,
         callback: function() {}
     };
 
@@ -35,7 +36,7 @@
             //var position = {lat: this.settings.lat, lng: this.settings.lng};
 
             this.map = new google.maps.Map(this.element, {
-                zoom: 4,
+                zoom: this.settings.radius,
                 center: position,
                 disableDefaultUI: true
             });

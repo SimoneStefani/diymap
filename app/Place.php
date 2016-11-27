@@ -14,7 +14,7 @@ class Place extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'lati', 'long'];
+    protected $fillable = ['name', 'lati', 'long', 'board_id', 'is_main', 'radius'];
 
     /**
      * A place can be referenced by a board.

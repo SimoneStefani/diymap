@@ -16,6 +16,8 @@
     <div class="overlay-circle"></div>
     <form class="form-horizontal" name="create_form" role="form" method="POST" action="{{ url('/boards/'.$board->id.'/places') }}">
         {{ csrf_field() }}
+        <input id="lati" type="hidden" name="lati" value="{{ $lat }}">
+        <input id="long" type="hidden" name="long" value="{{ $lng }}">
         <div class="container-create-btn">
             <button type="submit" class="btn btn-resurrection">CREATE</button>
         </div>
