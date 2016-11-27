@@ -23,7 +23,7 @@
         }
 
         function error() {
-            // console.log("error");
+            console.log("error");
         }
     @endif
 </script>
