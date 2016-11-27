@@ -45,7 +45,8 @@
             });
 
             //app.position = new google.maps.LatLng({lat: data.places[0].lati, lng: data.places[0].long});
-            app.activeMarkers.push(new CustomMarker(app.position,app.map,{marker_id: 'tower'},''));
+            // app.activeMarkers.push();
+            var tower = new CustomMarker(app.position, app.map,{marker_id: 'tower'},'');
 
             if (parseInt(this.settings.board) > 0) {
                 var polling = setInterval(function() {
@@ -86,29 +87,31 @@
                         };
                     };
 
-                    if (!app.tower) {
-                        //add tower marker
-                        
-                    };
-
-
+                    app.activeMarkers = [];
                     //add new/current participants
                     for (var i = 0; i < data.participants.length; i++) {
                         var location = data.participants[i].locations[0];
-                        app.position = new google.maps.LatLng({lat: location.lati, lng: location.long});
+                        var tempPosition = new google.maps.LatLng({lat: location.lati, lng: location.long});
                         var userID = data.participants[i].id;
+                        
+                        marker_id = 'slave';
                         if (mapOwner == userID) {
                             marker_id = 'king';
-                        } else {
-                            marker_id = 'slave'
                         }
-                        hash = data.participants[i].hash;
-                        app.activeMarkers.push(new CustomMarker(app.position,app.map,{marker_id: marker_id},hash));
+
+                        app.activeMarkers.push(new CustomMarker(
+                            tempPosition,
+                            app.map,
+                            {
+                                marker_id: marker_id
+                            },
+                            data.participants[i].hash
+                        ));
                     }
 
                 },
                 error: function() {
-                    console.log('ERROR');
+                    // console.log('ERROR');
                 }
             });
         },

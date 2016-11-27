@@ -10,7 +10,7 @@ function CustomMarker(latlng,map,args,hash) {
     this.hash = hash;
 
     this.removeMarker = function() {
-        this.setMap(null);
+        this.map = null;
     };
 
     this.updateLocation = function(latLng) {
