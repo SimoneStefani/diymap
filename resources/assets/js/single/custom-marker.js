@@ -31,34 +31,56 @@ CustomMarker.prototype.onAdd = function() {
     div.style.height = '30px';
 
     //create image element and add it to div + class for styling
-    var imgAvatar = document.createElement('img');
+    var imgAvatar;
     var imgCrown;
-    if (typeof(this.args.marker_id) !== 'undefined') {
-        var name = 'avatar_' + this.args.marker_id;
-        imgAvatar.classList.add(name);
-        if (name == 'avatar_king') {
-            imgCrown = document.createElement('img');
-        }
-    };
-    //get avatar from gravatar
-    var imgAvatarSrc = 'https://www.gravatar.com/avatar/' + this.hash + '?s=30';
-    imgAvatar.src = imgAvatarSrc;
-    imgAvatar.style.height = '100%';
-    imgAvatar.style.width = '100%';
-    imgAvatar.style.position = 'absolute';
-    div.appendChild(imgAvatar);
+    var imgTower;
 
-    //add feature if user is king
-    if (imgCrown) {
-        imgCrown.src = 'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/2/22/22624/croen-f.jpg';
-        imgCrown.style.height = '100%';
-        imgCrown.style.width = '100%';
-        imgCrown.style.position = 'relative';
-        imgCrown.style.left = 0 + 'px';
-        imgCrown.style.top = -40 + 'px';
-        div.appendChild(imgCrown);
+    if (typeof(this.args.marker_id) !== 'undefined') {
+        if (this.args.marker_id == 'tower') {
+            imgTower = document.create('img');
+        } else {
+            imgAvatar = document.createElement('img');
+            var name = 'avatar_' + this.args.marker_id;
+            imgAvatar.classList.add(name);
+
+            if(this.args.marker_id =='king')
+                imgCrown = document.createElement('img');   
+        };
+    };
+
+    //for debug
+    //console.log('Adding new marker');
+    //console.log(this.args.marker_id);
+
+    if (imgTower) { //add tower icon
+        imgTower.src = 'https://cdn4.iconfinder.com/data/icons/map1/502/Untitled-18-512.png';
+        imgAvatar.style.height = '100%';
+        imgAvatar.style.width = '100%';
+        imgAvatar.style.position = 'absolute';
+        div.appendChild(imgAvatar);
+
+    } else { //if not tower
+        //get avatar from gravatar
+        var imgAvatarSrc = 'https://www.gravatar.com/avatar/' + this.hash + '?s=30';
+        imgAvatar.src = imgAvatarSrc;
+        imgAvatar.style.height = '100%';
+        imgAvatar.style.width = '100%';
+        imgAvatar.style.position = 'absolute';
+        div.appendChild(imgAvatar);
+
+        //add feature if (king)
+        if (imgCrown) {
+            imgCrown.src = 'https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/2/22/22624/croen-f.jpg';
+            imgCrown.style.height = '100%';
+            imgCrown.style.width = '100%';
+            imgCrown.style.position = 'relative';
+            imgCrown.style.left = 0 + 'px';
+            imgCrown.style.top = -40 + 'px';
+            div.appendChild(imgCrown);
+        };
     }
 
+    //update div
     this.div_ = div;
     //add elements to "overlayLayer" pane
     var panes = this.getPanes();

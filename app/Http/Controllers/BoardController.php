@@ -90,6 +90,8 @@ class BoardController extends Controller
             $p['hash'] = md5($p->email);
         }
 
+        $board->places;
+
         return json_encode($board);
     }
 }

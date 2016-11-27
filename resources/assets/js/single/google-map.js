@@ -58,7 +58,6 @@
                             app.activeMarkers[i].removeMarker();
                         };
                     };
-                    
 
                     //add new/current participants
                     for (var i = 0; i < data.participants.length; i++) {
@@ -73,8 +72,13 @@
                         hash = data.participants[i].hash;
                         app.activeMarkers.push(new CustomMarker(position,app.map,{marker_id: marker_id},hash));
                     }
-                    console.log('SUCCESS');
-                    console.log(data);
+
+                    //add tower marker
+                    lati = data.places[0].lati;
+                    long = data.places[0].long;
+                    position = new google.maps.LatLng({lat: location.lati, lng: location.long});
+                    marker_id = 'tower';
+                    app.activeMarkers.push(new CustomMarker(position,app.map,{marker_id: marker_id},''));
 
                 },
                 error: function() {
