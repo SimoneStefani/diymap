@@ -37,7 +37,7 @@ CustomMarker.prototype.onAdd = function() {
 
     if (typeof(this.args.marker_id) !== 'undefined') {
         if (this.args.marker_id == 'tower') {
-            imgTower = document.create('img');
+            imgTower = document.createElement('img');
         } else {
             imgAvatar = document.createElement('img');
             var name = 'avatar_' + this.args.marker_id;
@@ -54,10 +54,10 @@ CustomMarker.prototype.onAdd = function() {
 
     if (imgTower) { //add tower icon
         imgTower.src = 'https://cdn4.iconfinder.com/data/icons/map1/502/Untitled-18-512.png';
-        imgAvatar.style.height = '100%';
-        imgAvatar.style.width = '100%';
-        imgAvatar.style.position = 'absolute';
-        div.appendChild(imgAvatar);
+        imgTower.style.height = '100%';
+        imgTower.style.width = '100%';
+        imgTower.style.position = 'absolute';
+        div.appendChild(imgTower);
 
     } else { //if not tower
         //get avatar from gravatar

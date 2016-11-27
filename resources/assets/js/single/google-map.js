@@ -30,17 +30,22 @@
         map: null,
         search: null,
         activeMarkers: [],
+        position: null,
+        tower: null,
 
         init: function() {
             var app = this;
-            var position = new google.maps.LatLng({lat: this.settings.lat, lng: this.settings.lng});
+            app.position = new google.maps.LatLng({lat: this.settings.lat, lng: this.settings.lng});
             //var position = {lat: this.settings.lat, lng: this.settings.lng};
 
             this.map = new google.maps.Map(this.element, {
                 zoom: this.settings.radius,
-                center: position,
+                center: app.position,
                 disableDefaultUI: true
             });
+
+            //app.position = new google.maps.LatLng({lat: data.places[0].lati, lng: data.places[0].long});
+            app.activeMarkers.push(new CustomMarker(app.position,app.map,{marker_id: 'tower'},''));
 
             if (parseInt(this.settings.board) > 0) {
                 var polling = setInterval(function() {
@@ -81,10 +86,16 @@
                         };
                     };
 
+                    if (!app.tower) {
+                        //add tower marker
+                        
+                    };
+
+
                     //add new/current participants
                     for (var i = 0; i < data.participants.length; i++) {
                         var location = data.participants[i].locations[0];
-                        position = new google.maps.LatLng({lat: location.lati, lng: location.long});
+                        app.position = new google.maps.LatLng({lat: location.lati, lng: location.long});
                         var userID = data.participants[i].id;
                         if (mapOwner == userID) {
                             marker_id = 'king';
@@ -92,15 +103,8 @@
                             marker_id = 'slave'
                         }
                         hash = data.participants[i].hash;
-                        app.activeMarkers.push(new CustomMarker(position,app.map,{marker_id: marker_id},hash));
+                        app.activeMarkers.push(new CustomMarker(app.position,app.map,{marker_id: marker_id},hash));
                     }
-
-                    //add tower marker
-                    lati = data.places[0].lati;
-                    long = data.places[0].long;
-                    position = new google.maps.LatLng({lat: location.lati, lng: location.long});
-                    marker_id = 'tower';
-                    app.activeMarkers.push(new CustomMarker(position,app.map,{marker_id: marker_id},''));
 
                 },
                 error: function() {
