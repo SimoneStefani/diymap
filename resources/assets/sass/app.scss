@@ -183,9 +183,11 @@
 	}
 
 	&.board-card-joined {
-		background: #a95e84;
+		.board-card-img {
+			background: #a95e84;
+		}
 	}
-	
+
 	.board-card-title {
 		color: initial;
 		width: calc(100% - 90px);
