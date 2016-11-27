@@ -15,8 +15,8 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('lati');
-            $table->float('long');
+            $table->double('lati', 15, 8);
+            $table->double('long', 15, 8);
             $table->timestamps();
             $table->softDeletes();
         });

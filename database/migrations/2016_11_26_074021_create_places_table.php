@@ -16,8 +16,8 @@ class CreatePlacesTable extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->float('lati');
-            $table->float('long');
+            $table->double('lati', 15, 8);
+            $table->double('long', 15, 8);
             $table->integer('board_id')->unsigned();
             $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
             $table->boolean('is_main')->default(false);
