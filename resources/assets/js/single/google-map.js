@@ -92,7 +92,7 @@
                     //add new/current participants
                     for (var i = 0; i < data.participants.length; i++) {
                         var location = data.participants[i].locations[0];
-                        var tempPosition = new google.maps.LatLng({lat: location.lati, lng: location.long});
+                        var tempPosition = new google.maps.LatLng({lat: parseFloat(location.lati), lng: parseFloat(location.long)});
                         var userID = data.participants[i].id;
                         
                         marker_id = 'slave';
