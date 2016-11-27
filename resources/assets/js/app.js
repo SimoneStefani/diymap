@@ -42,6 +42,14 @@ var $where = $('#where'),
     $long = $('#long');
 
 if ($where.length > 0) {
+    $where.on('focus', function() {
+        $(this).parent().addClass('is-active');
+    });
+
+    $where.on('blur', function() {
+        $(this).parent().removeClass('is-active');
+    });
+
     var search = new google.maps.places.SearchBox($where.get(0), {});
     search.addListener('places_changed', function() {
         var places = search.getPlaces();

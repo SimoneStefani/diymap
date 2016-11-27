@@ -19,6 +19,6 @@
 @section('content')
     <a class="btn btn-primary" id="invite-user">Invite</a>
     <div id="map" data-lat="{{ $location->lati }}" data-lng="{{ $location->long }}"></div>
-    <div class="canvas-title canvas-title-inboard">Title</div>
+    <div class="canvas-title canvas-title-inboard">{{ $location->name }}</div>
     <div class="overlay-circle"></div>
 @endsection
