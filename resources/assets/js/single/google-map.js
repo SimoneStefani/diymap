@@ -35,7 +35,7 @@
 
         init: function() {
             var app = this;
-            app.position = new google.maps.LatLng({lat: this.settings.lat, lng: this.settings.lng});
+            app.position = new google.maps.LatLng({lat: parseFloat(this.settings.lat), lng: parseFloat(this.settings.lng)});
             //var position = {lat: this.settings.lat, lng: this.settings.lng};
 
             this.map = new google.maps.Map(this.element, {
@@ -91,7 +91,21 @@
                     app.activeMarkers = [];
                     //add new/current participants
                     for (var i = 0; i < data.participants.length; i++) {
+
+                        if(data.participants[i].locations.length == 0) {
+                            continue;
+                        }
+                        
                         var location = data.participants[i].locations[0];
+
+                        if(location.lati === 'undefined') {
+                            location.lati = 0.0;
+                        }
+                        if(location.long === 'undefined') {
+                            location.long = 0.0;
+                        }
+                        
+
                         var tempPosition = new google.maps.LatLng({lat: parseFloat(location.lati), lng: parseFloat(location.long)});
                         var userID = data.participants[i].id;
                         
