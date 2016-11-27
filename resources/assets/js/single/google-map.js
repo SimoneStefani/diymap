@@ -51,7 +51,7 @@
             if (parseInt(this.settings.board) > 0) {
                 var polling = setInterval(function() {
                     app.initPolling();
-                }, 1000);
+                }, 5000);
             }
 
             //########## AJAX TRY #######
@@ -84,6 +84,7 @@
                     if (app.activeMarkers.length > 0) {
                         for (var i=0; i<app.activeMarkers.length; i++) {
                             app.activeMarkers[i].removeMarker();
+                            console.log("marker--");
                         };
                     };
 
@@ -99,6 +100,7 @@
                             marker_id = 'king';
                         }
 
+                        console.log("marker++");
                         app.activeMarkers.push(new CustomMarker(
                             tempPosition,
                             app.map,
@@ -108,6 +110,8 @@
                             data.participants[i].hash
                         ));
                     }
+
+                    console.log("-end");
 
                 },
                 error: function() {
