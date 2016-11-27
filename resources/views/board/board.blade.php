@@ -23,7 +23,7 @@
 	<div class="user-ribbon-wrapper">
 	    <div class="user-ribbon">
         @foreach($board->participants as $part)
-	    	<div class="user"><img src="/uploads/avatars/{{$loop->iteration}}.svg"></div>
+            <div class="user" style="background-image: url(https://www.gravatar.com/avatar/{{ md5($part->email) }}"></div>
         @endforeach
 	    </div>
 	</div>
