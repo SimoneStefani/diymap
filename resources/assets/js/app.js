@@ -39,9 +39,7 @@ $('#invite-user').on('click', function() {
 
 var $where = $('#where'),
     $lati = $('#lati'),
-
     $long = $('#long');
-
 
 if ($where.length > 0) {
     var search = new google.maps.places.SearchBox($where.get(0), {});
