@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css"/>
 </head>
 <body>
     <div id="app">
