@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('board_id')->unsigned();
             $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
-            $tabel->text('content')->nullable();
+            $table->text('content')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
