@@ -9,6 +9,7 @@
         lng: 0,
         input: null,
         radius: 17,
+        board: -1,
         callback: function() {}
     };
 
@@ -41,11 +42,32 @@
                 disableDefaultUI: true
             });
 
+            if (parseInt(this.settings.board) > 0) {
+                var polling = setInterval(function() {
+                    app.initPolling();
+                }, 1000);
+            }
+
             //########## AJAX TRY #######
 
+            
+
+            //add marker
+            // this.activeMarkers.push(new CustomMarker(position,this.map,{marker_id: 'slave'}));
+
+            //add another marker
+            // var newPosition = new google.maps.LatLng({lat: -40, lng: 140});
+            // this.activeMarkers.push(new CustomMarker(newPosition,this.map,{marker_id: 'king'}));
+
+            //update locations like so...
+            //this.activeMarkers[0].updateLocation(newPosition);
+        },
+
+        initPolling: function() {
+            var app = this;
             $.ajax({
                 type: 'GET',
-                url: 'http://localhost:8888/boards/4/users',
+                url: '/boards/' + app.settings.board + '/users',
                 dataType: 'json',
                 success: function(data) {
                     var mapOwner = data.id;
@@ -85,17 +107,6 @@
                     console.log('ERROR');
                 }
             });
-
-
-            //add marker
-            this.activeMarkers.push(new CustomMarker(position,this.map,{marker_id: 'slave'}));
-
-            //add another marker
-            var newPosition = new google.maps.LatLng({lat: -40, lng: 140});
-            this.activeMarkers.push(new CustomMarker(newPosition,this.map,{marker_id: 'king'}));
-
-            //update locations like so...
-            //this.activeMarkers[0].updateLocation(newPosition);
         },
 
         addMarker: function(pos, title) {

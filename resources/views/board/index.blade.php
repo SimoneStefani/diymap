@@ -19,17 +19,29 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="canvas-title">Boards</div>
             @if(isset($ownedBoards))
-            @foreach($ownedBoards as $owned)
-                <div class="board-card">
-                    <div class="board-card-img"></div>
-                    <a href="{{ url('/boards/'.$owned->id) }}">
-                    <div class="board-card-title">{{ $owned->title }}</div>
-                    </a>
-                </div>
-            @endforeach
+                @foreach($ownedBoards as $owned)
+                    <div class="board-card">
+                        <div class="board-card-img"></div>
+                        <a href="{{ url('/boards/'.$owned->id) }}">
+                        <div class="board-card-title">{{ $owned->title }}</div>
+                        </a>
+                    </div>
+                @endforeach
+            @endif
+
+            @if(isset($joinedBoards))
+                @foreach($joinedBoards as $owned)
+                    <div class="board-card board-card-joined">
+                        <div class="board-card-img"></div>
+                        <a href="{{ url('/boards/'.$owned->id) }}">
+                        <div class="board-card-title">{{ $owned->title }}</div>
+                        </a>
+                    </div>
+                @endforeach
             @endif
         </div>
     </div>
+
     <div class="search-container">
     	<form class="input-group" name="create_form" role="form" method="POST" action="{{ url('/boards') }}">
     	    {{ csrf_field() }}

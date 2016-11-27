@@ -181,6 +181,11 @@
 		border-radius: 45px;
 		background: #5e86a9;
 	}
+
+	&.board-card-joined {
+		background: #a95e84;
+	}
+	
 	.board-card-title {
 		color: initial;
 		width: calc(100% - 90px);

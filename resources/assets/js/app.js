@@ -3,6 +3,7 @@ window.ResMap = $map.GoogleMap({
     lat: $map.data('lat'),
     lng: $map.data('lng'),
     radius: $map.data('radius'),
+    board: $map.data('board'),
     input: $('#input')
 });
 

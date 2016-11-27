@@ -33,9 +33,9 @@ class BoardController extends Controller
         $board = Board::where('id', $board)->with('owner', 'participants', 'places')->firstOrFail();
         $location = $board->places->first();
 
-        if (Auth::user()->id != $board->owner_id && Auth::user()->joined()->where('board_id', $board->id)) {
-            throw new AccessDeniedHttpException("User not authorised!");
-        }
+        // if (Auth::user()->id != $board->owner_id && Auth::user()->joined()->where('board_id', $board->id)) {
+        //     throw new AccessDeniedHttpException("User not authorised!");
+        // }
 
         return view('board.board', compact('board', 'location'));
     }
@@ -44,7 +44,6 @@ class BoardController extends Controller
     {
         $ownedBoards = Auth::user()->ownedBoards;
         $joinedBoards = Auth::user()->joinedBoards;
-
         return view('board.index', compact(['ownedBoards', 'joinedBoards']));
     }
 
