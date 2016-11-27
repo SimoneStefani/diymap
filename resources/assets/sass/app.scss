@@ -102,6 +102,50 @@
 	font-weight: 700;
 }
 
+.board-card {
+	width: 100%;
+	height: 100px;
+	background: white;
+	border-radius: 50px;
+	margin-bottom: 15px;
+	padding: 5px;
+	position: relative;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+	cursor: pointer;
+	&:focus, &:hover {
+		box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.2);
+	}
+
+	.board-card-img {
+		float: left;
+		height: 90px;
+		width: 90px;
+		border-radius: 45px;
+		background: #5e86a9;
+	}
+
+	&.board-card-joined {
+		.board-card-img {
+			background: #a95e84;
+		}
+	}
+
+	.board-card-title {
+		color: initial;
+		width: calc(100% - 90px);
+		float: left;
+		font-size: 24px;
+		text-align: center;
+		padding: 23px 0;
+		@media(max-width: 767px){
+			padding: 31px 0;
+			font-size: 18px;
+		}
+	}
+}
+
+/*Board*/
+
 .canvas-title-inboard {
 	position: absolute;
 	z-index: 1000;
@@ -159,48 +203,33 @@
 	}
 }
 
-
-.board-card {
+.user-ribbon-wrapper {
+	position: absolute;
+	bottom: 0px;
 	width: 100%;
-	height: 100px;
-	background: white;
-	border-radius: 50px;
-	margin-bottom: 15px;
-	padding: 5px;
-	position: relative;
-	box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
-	cursor: pointer;
-	&:focus, &:hover {
-		box-shadow: 0px 2px 10px -2px rgba(0, 0, 0, 0.2);
-	}
-
-	.board-card-img {
-		float: left;
-		height: 90px;
-		width: 90px;
-		border-radius: 45px;
-		background: #5e86a9;
-	}
-
-	&.board-card-joined {
-		.board-card-img {
-			background: #a95e84;
-		}
-	}
-
-	.board-card-title {
-		color: initial;
-		width: calc(100% - 90px);
-		float: left;
-		font-size: 24px;
-		text-align: center;
-		padding: 23px 0;
-		@media(max-width: 767px){
-			padding: 31px 0;
-			font-size: 18px;
-		}
-	}
+	height: 85px;
+	overflow: scroll;
 }
+.user-ribbon {
+	position: absolute;
+	bottom: 20px;
+	left: 15px;
+	height: 60px;
+	display: flex;
+}
+
+.user {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background: white;
+    margin: 0 5px;
+    border: 2px solid white;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+
 
 /*Auth views*/
 

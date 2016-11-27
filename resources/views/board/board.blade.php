@@ -20,4 +20,9 @@
     <div id="map" data-lat="{{ $location->lati }}" data-lng="{{ $location->long }}" data-radius="{{ $location->radius }}" data-board="{{ $board->id }}"></div>
     <div class="canvas-title canvas-title-inboard">{{ $location->name }}</div>
     <div class="overlay-circle"></div>
+	<div class="user-ribbon-wrapper">
+	    <div class="user-ribbon">
+	    	<div class="user"></div>
+	    </div>
+	</div>
 @endsection
