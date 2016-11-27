@@ -30,16 +30,16 @@ class UserLocationController extends Controller
         if(is_null($location)) 
         {
             $updatedLocation = $user->locations()->create([
-                'long' => $request->long,
-                'lati' => $request->lati
+                'long' => number_format($request->long, 8),
+                'lati' => number_format($request->lati, 8)
             ]);
             $user->locations()->attach($updatedLocation, []);
             return json_encode($updatedLocation);
         } 
         else 
         {
-            $location->long = $request->long;
-            $location->lati = $request->lati;
+            $location->long = number_format($request->long, 8);
+            $location->lati = number_format($request->lati, 8);
             $location->save();
             return json_encode($location);  
         }       

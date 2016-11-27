@@ -13,7 +13,7 @@ Homestead.json
 /public/build/
 /public/css/
 /public/js/
-
+/public/uploads/*
 /public/fonts/
 /public/lang/
 /public/mail/
