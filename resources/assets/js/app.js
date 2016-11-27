@@ -43,11 +43,11 @@ var $where = $('#where'),
 
 if ($where.length > 0) {
     $where.on('focus', function() {
-        $(this).parent().addClass('is-active');
+        $(this).parent().find('.autofill-results').addClass('active');
     });
 
     $where.on('blur', function() {
-        $(this).parent().removeClass('is-active');
+        $(this).parent().find('.autofill-results').removeClass('active');
     });
 
     var search = new google.maps.places.SearchBox($where.get(0), {});
