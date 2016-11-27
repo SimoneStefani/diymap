@@ -19,10 +19,10 @@ class UserLocationController extends Controller
 
     public function updateUserLocation(string $userId, Request $request)
     {
-        $this->validate($request, [
-            'long' => 'required|numeric',
-            'lati' => 'required|numeric'
-        ]);
+        // $this->validate($request, [
+        //     'long' => 'required|numeric',
+        //     'lati' => 'required|numeric'
+        // ]);
 
         $user = User::where('id', $userId)->firstOrFail();
         $location = $user->locations()->first();
