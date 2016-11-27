@@ -86,6 +86,10 @@ class BoardController extends Controller
     {
         $board = Board::where('id', $board)->with('participants.locations')->firstOrFail();
 
+        foreach ($board->participants as $p) {
+            $p['hash'] = md5($p->email);
+        }
+
         return json_encode($board);
     }
 }

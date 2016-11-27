@@ -1,18 +1,25 @@
 CustomMarker.prototype = new google.maps.OverlayView();//subClass Overlay instance
 
 //Constructor function for CustomMarker object
-function CustomMarker(latlng,map,args) {
+function CustomMarker(latlng,map,args,hash) {
     this.latlng = latlng;
     this.map_ = map;
     this.div_ = null;
     this.args = args;
     this.setMap(map);
+    this.hash = hash;
+
+    this.removeMarker = function() {
+        this.setMap(null);
+    };
 
     this.updateLocation = function(latLng) {
         if(latLng) {
             this.latlng = latLng
         };
     };
+
+
 };
 
 CustomMarker.prototype.onAdd = function() {
@@ -34,7 +41,7 @@ CustomMarker.prototype.onAdd = function() {
         }
     };
     //get avatar from gravatar
-    var imgAvatarSrc = 'https://www.gravatar.com/avatar/' + window.userHash + '?s=30';
+    var imgAvatarSrc = 'https://www.gravatar.com/avatar/' + this.hash + '?s=30';
     imgAvatar.src = imgAvatarSrc;
     imgAvatar.style.height = '100%';
     imgAvatar.style.width = '100%';

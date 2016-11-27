@@ -41,6 +41,48 @@
                 disableDefaultUI: true
             });
 
+            //########## AJAX TRY #######
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8888/boards/4/users',
+                dataType: 'json',
+                success: function(data) {
+                    var mapOwner = data.id;
+                    var marker_id;
+                    var hash;
+
+                    //wipe canvas of markers if any
+                    if (app.activeMarkers.length > 0) {
+                        for (var i=0; i<app.activeMarkers.length; i++) {
+                            app.activeMarkers[i].removeMarker();
+                        };
+                    };
+                    
+
+                    //add new/current participants
+                    for (var i = 0; i < data.participants.length; i++) {
+                        var location = data.participants[i].locations[0];
+                        position = new google.maps.LatLng({lat: location.lati, lng: location.long});
+                        var userID = data.participants[i].id;
+                        if (mapOwner == userID) {
+                            marker_id = 'king';
+                        } else {
+                            marker_id = 'slave'
+                        }
+                        hash = data.participants[i].hash;
+                        app.activeMarkers.push(new CustomMarker(position,app.map,{marker_id: marker_id},hash));
+                    }
+                    console.log('SUCCESS');
+                    console.log(data);
+
+                },
+                error: function() {
+                    console.log('ERROR');
+                }
+            });
+
+
             //add marker
             this.activeMarkers.push(new CustomMarker(position,this.map,{marker_id: 'slave'}));
 
