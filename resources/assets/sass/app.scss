@@ -94,7 +94,7 @@
 }
 
 .canvas-title {
-	margin: 1% 0;
+	margin: 15px 0;
 	color: white;
 	width: 100%;
 	text-align: center;
@@ -105,7 +105,7 @@
 .canvas-title-inboard {
 	position: absolute;
 	z-index: 1000;
-	margin: 1% 0 0 0;
+	margin: 15px 0;
 }
 
 
@@ -308,5 +308,35 @@
 	.btn-form-nav {
 		border-radius: 0;
 		font-size: 20px;
+	}
+}
+
+
+
+
+.alertify {
+	z-index: 1050;
+	background-color: rgba(0,0,0,0.7);
+	.dialog>* {
+		width: 450px;
+		border-radius: 15px;
+		.msg {
+			font-size: 26px;
+			font-weight: 700;
+			text-align: center;
+			padding: 10px 0 40px;
+		}
+		input {
+			width: 95% !important;
+			height: 60px;
+			box-shadow: none !important;
+			border: none !important;
+			border-radius: 5px;
+			background: #f1f1f1 !important;
+			text-align: left; 
+			font-size: 16px !important;
+			outline: none !important;
+			margin-bottom: 40px !important;
+		}
 	}
 }
